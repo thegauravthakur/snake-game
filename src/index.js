@@ -2,6 +2,7 @@
     cellWidth: 40,
     rows: 10,
     columns: 10,
+    speedIncreaseFactor: 10,
 }
 const currentLocation = {row: 0, column: 0};
 const foodLocation = {row: -1, column: -1};
@@ -14,7 +15,7 @@ function createCell() {
     return cell;
 }
 
-function printCell(row, column) {
+function renderCell(row, column) {
     const board = document.getElementById('board');
     const cell = createCell();
     cell.style.left = String(config.cellWidth * column) + 'px';
@@ -55,9 +56,11 @@ function initializeGame() {
 }
 
 function printBoard() {
+    const board = document.getElementById('board');
+    board.style.width = String(config.cellWidth * config.columns) + 'px';
     for (let i = 0; i < config.rows; i++) {
         for (let j = 0; j < config.columns; j++) {
-            printCell(i, j);
+            renderCell(i, j);
         }
     }
     initializeGame();
@@ -97,7 +100,7 @@ function moveAndLight(currentLocation, direction, path) {
            const [value] = path.splice(0, 1);
            dimCell(value.row, value.column);
         }
-    }, 500 - (50*score.point));
+    }, 500 - (config.speedIncreaseFactor*score.point));
     return interval;
 }
 
