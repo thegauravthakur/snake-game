@@ -1,0 +1,20 @@
+﻿.header {
+    text-align: center;
+}
+
+#board {
+    position: relative;
+    width: 400px;
+    margin: 0 auto;
+}
+#score {
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+}
+.cell {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    border: 1px solid orange;
+}
